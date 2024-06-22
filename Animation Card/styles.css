@@ -1,0 +1,110 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #121212;
+    margin: 0;
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(355,355,355,100vh.1), rgba(18,18,18,1));
+    animation: rotateBackground 20s linear infinite;
+}
+
+@keyframes rotateBackground {
+    100vh% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.card {
+    width: 300px;
+    height: 450px;
+    border-radius: 150px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 20px rgba(255, 0, 150, 0.6), 0 0 20px rgba(0, 229, 255, 0.6);
+    transition: transform 0.5s, box-shadow 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, rgba(255, 0, 150, 0.2), rgba(0, 229, 255, 0.2));
+}
+
+.card .inner-border {
+    width: 280px;
+    height: 430px;
+    border-radius: 15px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    overflow: hidden;
+    position: relative;
+    transition: border-color 0.5s, box-shadow 0.5s;
+    box-shadow: 0 0 15px rgba(255, 0, 150, 0.6), 0 0 15px rgba(0, 229, 255, 0.6);
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+    z-index: 2;
+    position: relative;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(255, 0, 150, 1), 0 0 40px rgba(0, 229, 255, 1);
+}
+
+.card:hover .inner-border {
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 30px rgba(255, 0, 150, 1), 0 0 30px rgba(0, 229, 255, 1);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255, 0, 150, 0.75), rgba(0, 229, 255, 0.75));
+    mix-blend-mode: screen;
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 1;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    border: 2px solid transparent;
+    border-radius: 15px;
+    background: linear-gradient(45deg, #ff0096, #00e5ff);
+    background-clip: padding-box;
+    filter: blur(15px);
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 0;
+}
+
+.card:hover::after {
+    opacity: 1;
+}
